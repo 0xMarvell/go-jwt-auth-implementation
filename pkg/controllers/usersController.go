@@ -27,7 +27,7 @@ func Signup(c *gin.Context) {
 	hash, err := bcrypt.GenerateFromPassword([]byte(signupPayload.Password), 10)
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{
-			"error": "Failed to read request body",
+			"error": "Failed to hash password",
 		})
 		return
 	}
@@ -37,12 +37,12 @@ func Signup(c *gin.Context) {
 	result := config.DB.Create(&user)
 	if result.Error != nil {
 		c.JSON(http.StatusBadRequest, gin.H{
-			"error": "Failed to read request body",
+			"error": "Failed to create user",
 		})
 		return
 	}
 
-	// Return a response object
+	// Return a response object to confirm successful creation of user
 	c.JSON(http.StatusCreated, gin.H{
 		"success": true,
 		"message": "New user was successfully created",
