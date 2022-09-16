@@ -8,4 +8,5 @@ import (
 func RegisterUserRoutes(r *gin.Engine) {
 	// panic("not completed")
 	r.POST("/api/v1/user/signup", controllers.Signup)
+	r.POST("/api/v1/user/login", controllers.Login)
 }
