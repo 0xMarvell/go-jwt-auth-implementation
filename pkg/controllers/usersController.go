@@ -94,6 +94,7 @@ func Login(c *gin.Context) {
 		"expiration_time": time.Now().Add(time.Hour * 24 * 30).Unix(),
 	})
 	// Sign and get the complete encoded token as a string using the secret
+	// the secret key will be created by you (it can be a random sequence of characters e.g. 3r4jgnirbg8rhg08gvi0pvhh8)
 	// Tip: DO NOT HARD CODE YOUR SECRET KEY
 	// Store it as an environment variable instead
 	tokenString, err := token.SignedString([]byte(os.Getenv("JWT_SECRET")))
