@@ -28,4 +28,4 @@ go.work
 .vscode/
 
 ## Linux Executables ##
-go-jwt-auth
+auth
