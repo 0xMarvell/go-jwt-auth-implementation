@@ -39,7 +39,7 @@ func Signup(c *gin.Context) {
 	result := config.DB.Create(&user)
 	if result.Error != nil {
 		c.JSON(http.StatusBadRequest, gin.H{
-			"error": "Failed to create user",
+			"error": "Failed to create user: an account with that email already exists",
 		})
 		return
 	}
@@ -73,7 +73,7 @@ func Login(c *gin.Context) {
 		})
 		return
 	}
-	// Compare password gotten off request body to user password hash saved in database
+	// Compare password gotten off request body to user password hash stored in database
 	pwdErr := bcrypt.CompareHashAndPassword([]byte(user.Password), []byte(loginPayload.Password))
 	if pwdErr != nil {
 		c.JSON(http.StatusBadRequest, gin.H{
@@ -91,7 +91,7 @@ func Login(c *gin.Context) {
 		   For production, 30 days would be too much so a shorter time
 		   would be more optimal.
 		*/
-		"expiration": time.Now().Add(time.Hour * 24 * 30).Unix(),
+		"expiration_time": time.Now().Add(time.Hour * 24 * 30).Unix(),
 	})
 	// Sign and get the complete encoded token as a string using the secret
 	// Tip: DO NOT HARD CODE YOUR SECRET KEY
@@ -114,5 +114,14 @@ func Login(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{
 		"success": true,
 		"message": "JWT token generated successfully",
+	})
+}
+
+// GetUSerDetails retireves an existing user's account details
+func GetUserDetails(c *gin.Context) {
+	user, _ := c.Get("user")
+	c.JSON(http.StatusOK, gin.H{
+		"success":      true,
+		"user_details": user,
 	})
 }
