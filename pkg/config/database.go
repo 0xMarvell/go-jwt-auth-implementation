@@ -13,6 +13,7 @@ import (
 
 var DB *gorm.DB
 
+// Connect initializes a database connection for the API
 func Connect() {
 	var dbConnectErr error
 
