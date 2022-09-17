@@ -28,6 +28,4 @@ go.work
 .vscode/
 
 ## Linux Executables ##
-blog
-migrate
 go-jwt-auth
