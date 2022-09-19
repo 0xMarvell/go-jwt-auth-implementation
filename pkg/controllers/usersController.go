@@ -120,7 +120,9 @@ func Login(c *gin.Context) {
 
 // GetUSerDetails retireves an existing user's account details
 func GetUserDetails(c *gin.Context) {
+	// Retireve user details attached to request after passing through middleware
 	user, _ := c.Get("user")
+	// Return user details as JSON response
 	c.JSON(http.StatusOK, gin.H{
 		"success":      true,
 		"user_details": user,
