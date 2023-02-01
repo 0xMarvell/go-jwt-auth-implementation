@@ -1,6 +1,6 @@
 # Go-JWT-Auth-Implementation
 
-Implementation of a simple authentication system using [JWT (JSON Web Tokens)](https://jwt.io/). The API generates a token (which will be used for authentication) for the user. The token is then stored in an [httpOnly cookie](https://www.cookiepro.com/knowledge/httponly-cookie/) for security purposes, as opposed to storing the token in local storage.
+Implementation of a simple authentication system using [JWT (JSON Web Tokens)](https://jwt.io/). The API generates a token which will be used to authenticate the user. The token is then stored in an [httpOnly cookie](https://www.cookiepro.com/knowledge/httponly-cookie/) for security purposes, as opposed to storing the token in local storage.
 
 The API was built using the following tools:
 
