@@ -86,7 +86,7 @@ func Login(c *gin.Context) {
 	// you would like it to contain.
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{
 		"subject": user.ID,
-		/* Expiration time on line 92 == 30 days.
+		/* Expiration time on line 94 == 30 days.
 		   This is jut an example implementation
 		   For production, 30 days would be too much so a shorter time
 		   would be more optimal.
